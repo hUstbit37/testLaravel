@@ -40,9 +40,9 @@
             <div class="div-title">Expried</div>
             <input name='expired_product' type="date" value='{{$productUpdate->expired}}'><br><br>
             <!-- <input class='btn-submit' type="submit" value='Update'> -->
-            <button type='submit' class='btn-submit'>Update</button>
+            <button type='submit' class='btn-submit'>Update</button><br><br>
         </form>
-        <div><a href="product">Home</a></div>
+        <div><a href="/product" class='a-back'>Back</a></div>
     </div>
 
 </body>

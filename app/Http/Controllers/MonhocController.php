@@ -20,16 +20,16 @@ class MonhocController extends Controller
 
     public function insert(Request $k)
     {
-        $validateData = $k->validate([
-            'ten_mon' => 'required|alpha',
-            'ma_mon' => 'required',
-            'so_tc' => 'required'
-        ]);
-        dd($validateData);
-        if($validateData->fails())
-        {
-            echo 'Eror';
-        }
+        // $validateData = $k->validate([
+        //     'ten_mon' => 'required|alpha',
+        //     'ma_mon' => 'required',
+        //     'so_tc' => 'required'
+        // ]);
+        // //dd($validateData);
+        // if($validateData->fails())
+        // {
+        //     echo 'Eror';
+        // }
         $tenRq = $k->ten_mon;
         $mamonRq = $k->ma_mon;
         $sotcRq = $k->so_tc;
@@ -77,7 +77,14 @@ class MonhocController extends Controller
         $h = db::table('monhoc')->where('tenmonhoc','like', '%'.$tenRq1.'%')->paginate(5);
         //dd($h);
         return view('monhoc/dsMonhoc', ['dsMonhocView'=>$h]);
-        //dd($this->informonhoc($tenRq1));
-        //dd($search);
+    }
+    public function delete(Request $rq)
+    {
+        $reusltDB = DB::table('monhoc')->where('id', '=', $rq->id)->delete();
+        if($reusltDB){
+            echo 'OK';
+        }else{
+            echo 'FAIL';
+        }
     }
 }

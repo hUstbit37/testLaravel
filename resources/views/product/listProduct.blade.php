@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Product Page</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="js/jquery-3.4.1.min.js"></script> <!--Tai sao k co cai nay thi Delete k chay -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <title>Product Page</title>
+
         <style>
             body{
                 padding-top: 20px;
@@ -45,9 +48,6 @@
                 color : #000;
                 margin-left: 20px;
             }
-            .span-plus{
-                font-size: 20px;
-            }
             .row-1{
                 margin-right: 0;
                 margin-left: 0; 
@@ -57,16 +57,6 @@
                 background-color: #e0e0e0;
                 border-color: #e0e0e0;
             }
-            /* .a:link {
-                color: #00FF00;
-            }
-            .a:hover {
-                color: #FF00FF;
-                text-decoration:blink;
-            }
-            .a:visited {
-                color: #FF0000 !important;
-            } */
             th{
                 text-align: center;
             }
@@ -75,9 +65,6 @@
     <body>
         <div class='container'>
             <h1><a href="product">Products Page</a></h1>
-
-            
-
             <div>
                 <form action="searchPrByName" method="post">
                     @csrf
@@ -85,7 +72,6 @@
                         <input class='form-control' type="text" placeholder='Search Product by name' name="name_search" value=''/>
                         <button type='submit'>Search</button>
                     </div>
-
                 </form>
             </div>
             
@@ -137,5 +123,5 @@
             <div><a href="createProduct">Click to add new product</a></div>
         </div>      
     </body>
-    <script src="js/demo.js"></script>
+    <script src="js/delete_product.js"></script>
 </html>

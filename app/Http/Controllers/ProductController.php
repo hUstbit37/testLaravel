@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Prouduct;
 
 class ProductController extends Controller
 {
@@ -30,18 +31,13 @@ class ProductController extends Controller
         //upload anh len folder img trong public
         $k->imgProduct->move(public_path('imgs'), $tenanh);
         //dd($tenanh);
-        $nameReq= $k->name_product;
-        $priceReq = $k->price_product;
-        $desReq = $k->des_product;
-        $quantityReq = $k->quan_product;
-        $expiredReq = $k->expired_product;
         $insertRs = DB::table('products')->insert(
             [
-                'name'=>$nameReq,
-                'price'=>$priceReq,
-                'description'=>$desReq,
-                'quantity'=>$quantityReq,
-                'expired'=>$expiredReq,
+                'name'=>$k->name_product,
+                'price'=>$k->price_product,
+                'description'=>$k->des_product,
+                'quantity'=>$k->quan_product,
+                'expired'=>$k->expired_product,
                 'img' => $tenanh
             ]
             );
@@ -59,18 +55,16 @@ class ProductController extends Controller
 
     public function update(Request $req)
     {
-        $idReq=$req->id;
-        $nameReq= $req->name_product;
-        $priceReq = $req->price_product;
-        $desReq = $req->des_product;
-        $quantityReq = $req->quan_product;
-        $expiredReq = $req->expired_product;
-        $updateRs = db::table('products')->where('id', $idReq)->update([
-            'name'=>$nameReq,
-            'price'=>$priceReq,
-            'description'=>$desReq,
-            'quantity'=>$quantityReq,
-            'expired'=>$expiredReq
+        $tenanh = $req->imgProduct->getClientOriginalName();
+        $req->imgProduct->move(public_path('imgs'), $tenanh);
+            
+        $updateRs = db::table('products')->where('id', $req->id)->update([
+            'name'=>$req->name_product,
+            'price'=>$req->price_product,
+            'description'=>$req->des_product,
+            'quantity'=>$req->quan_product,
+            'img' => $tenanh,
+            'expired'=>$req->expired_product
         ]);
         if($updateRs) return redirect('product');
         else return 'Save Error';
@@ -90,9 +84,9 @@ class ProductController extends Controller
         return view('product/listProduct', ['productListView'=>$sr]);
     }
 
-    public function delete(Request $de)
+    public function delete(Request $rq)
     {
-        $reusltDB = DB::table('products')->where('id', '=', $de->id)->delete();
+        $reusltDB = DB::table('products')->where('id', '=', $rq->id)->delete();
         if($reusltDB){
             echo 'OK';
         }else{
