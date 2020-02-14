@@ -1,4 +1,4 @@
-# Xin chào mọi người, đây là project làm về laravel framework với ngôn ngữ php đầu tiên của mình
+# Xin chào mọi người, đây là 1 project đơn giản làm về laravel framework với ngôn ngữ php của mình
 ----
 
 - Thư mục: MyLaravel 
